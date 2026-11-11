@@ -1,0 +1,571 @@
+---
+title: "IA Generativa, Gobierno de Datos y Proyecto Integrador"
+subtitle: "Inteligencia Artificial"
+author: "William Ramos-Chucuri"
+lang: es
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 3
+    code-fold: false
+    embed-resources: true
+execute:
+ enabled: false
+---
+
+# Unidad 1 — Inteligencia Artificial Generativa aplicada a Business Intelligence
+
+Diplomado en Business Intelligence e Inteligencia Artificial · Miércoles 11 de noviembre de 2026
+
+Hoy comenzamos con los fundamentos de la inteligencia artificial generativa, los modelos de lenguaje (LLMs), su arquitectura y las herramientas que permiten utilizarlos.
+
+La clase debe conectar con lo que los estudiantes ya conocen: SQL, bases de datos, R, Python, Machine Learning y Power BI.
+
+Objetivo de aprendizaje: comprender qué es un LLM, cómo genera respuestas, por qué distintos modelos pueden responder de forma diferente y cómo utilizar esta tecnología de manera responsable en procesos de Business Intelligence.
+
+## 1. Introducción: de Business Intelligence a inteligencia artificial generativa
+
+### 1.1. ¿Qué es la inteligencia artificial?
+
+La inteligencia artificial (IA) es un campo de la informática que desarrolla sistemas capaces de realizar tareas que requieren capacidades como reconocimiento de patrones, predicción, procesamiento del lenguaje, planificación o toma de decisiones.
+
+No todos los sistemas de inteligencia artificial funcionan de la misma manera.
+
+Algunos siguen reglas explícitas; otros aprenden patrones a partir de datos y pueden utilizarlos para realizar predicciones o generar contenido.
+
+### 1.2. ¿Qué es Machine Learning?
+
+El Machine Learning (aprendizaje automático) es una rama de la IA que permite construir modelos que aprenden relaciones estadísticas a partir de los datos.
+
+En el módulo anterior, los estudiantes trabajaron con algoritmos de regresión, clasificación y agrupamiento.
+
+Por ejemplo:
+
+- Regresión: estimar las ventas del próximo mes.
+
+- Clasificación: estimar la probabilidad de incumplimiento de un cliente.
+
+- Clustering: identificar segmentos de clientes con comportamientos similares.
+
+Estos modelos suelen diseñarse para tareas analíticas específicas.
+
+### 1.3. ¿Qué es la IA generativa?
+
+La inteligencia artificial generativa (Generative AI) comprende modelos que pueden producir contenido nuevo a partir de patrones aprendidos durante su entrenamiento y de las instrucciones recibidas.
+
+Ese contenido puede ser texto, código de programación, imágenes, audio o información estructurada.
+
+En Business Intelligence podemos utilizarla para explicar indicadores, redactar informes ejecutivos, proponer consultas SQL, documentar procesos y asistir en el desarrollo de modelos analíticos.
+
+### Diferencia entre BI, ML e IA generativa
+
+| Tecnología | Pregunta principal | Ejemplo |
+|----|----|----|
+| Business Intelligence | ¿Qué ocurrió? | Las ventas aumentaron un 4,49 % |
+| Machine Learning | ¿Qué podría ocurrir? | Predicción de ventas de abril |
+| IA generativa | ¿Cómo podemos interpretar o comunicar la información? | Elaboración de un informe ejecutivo |
+
+Esta clasificación es didáctica: las herramientas pueden combinarse y el BI también puede incorporar modelos predictivos.
+
+### Relación entre estas tecnologías
+
+![](images/clipboard-559102015.png)
+
+Pregunta para los estudiantes: si ya tenemos SQL para calcular indicadores y Power BI para visualizarlos, ¿qué aporta realmente la inteligencia artificial generativa?
+
+La respuesta es que puede facilitar la interacción con los sistemas analíticos mediante lenguaje natural y asistir en la interpretación, programación y documentación. Pero no reemplaza los cálculos verificables ni la responsabilidad del analista.
+
+## 2. Modelos de lenguaje de gran tamaño (LLMs)
+
+### 2.1. ¿Qué es un LLM?
+
+Un Large Language Model (LLM) es un modelo de aprendizaje automático entrenado con grandes cantidades de información para procesar y generar lenguaje.
+
+Los modelos de lenguaje actuales pueden realizar diferentes actividades, como responder preguntas, resumir documentos, traducir textos, generar código y producir explicaciones.
+
+Entre las familias de modelos que podemos estudiar se encuentran GPT, Claude, Gemini, DeepSeek y Qwen.
+
+Una distinción importante: ChatGPT es una aplicación que permite interactuar con modelos; GPT es una familia de modelos. No debemos confundir la interfaz con el modelo que la utiliza.
+
+### 2.2. ¿Cómo aprende un LLM?
+
+Durante el entrenamiento, el modelo ajusta sus parámetros matemáticos para identificar patrones presentes en los datos.
+
+Una tarea fundamental en muchos modelos de lenguaje es aprender a predecir el siguiente token a partir de los anteriores.
+
+Imaginemos la siguiente frase:
+
+> Las ventas de la empresa aumentaron durante el mes de...
+
+Un modelo de lenguaje puede asignar diferentes probabilidades a las continuaciones posibles de la secuencia.
+
+A partir de estas predicciones repetidas, puede producir párrafos completos.
+
+Sin embargo, la generación de un texto convincente no garantiza que su contenido corresponda con información empresarial verdadera.
+
+### 2.3. ¿Qué son los tokens?
+
+Los LLMs no procesan necesariamente el texto palabra por palabra. Utilizan unidades denominadas tokens.
+
+Un token puede representar una palabra completa, una parte de una palabra, un símbolo o una secuencia de caracteres.
+
+Ejemplo conceptual de tokenización
+
+«Analicemos las ventas mensuales»
+
+Analicemos
+
+las
+
+ventas
+
+mensuales
+
+Separación ilustrativa. La tokenización real depende del tokenizador y podría dividir estas palabras de otra manera.
+
+Los tokens son importantes porque influyen en la capacidad de contexto, el procesamiento de información y, en determinadas APIs comerciales, el costo del servicio.
+
+### 2.4. ¿Qué es un prompt?
+
+Un prompt es una instrucción o conjunto de mensajes que proporcionamos a un modelo para orientar su respuesta.
+
+Por ejemplo, podemos escribir:
+
+> Explícame las ventas.
+
+Pero también podemos proporcionar una instrucción más específica:
+
+> Actúa como analista de Business Intelligence. Utiliza los datos de ventas de enero, febrero y marzo para identificar variaciones mensuales. Presenta los cálculos y redacta una conclusión de máximo 100 palabras. No inventes explicaciones.
+
+La segunda instrucción define mejor la tarea, el contexto, el formato y las restricciones.
+
+Este concepto será desarrollado con mayor profundidad en la Unidad 2, dedicada a Prompt Engineering.
+
+### 2.5. ¿Qué es la ventana de contexto?
+
+Es la cantidad de información, medida habitualmente en tokens, que un modelo puede procesar dentro de una interacción, según sus límites y configuración.
+
+El contexto puede contener instrucciones, mensajes anteriores, documentos, datos empresariales y resultados de herramientas.
+
+Por ejemplo, si proporcionamos un diccionario de datos, el modelo puede utilizar esas definiciones para interpretar las variables de una base.
+
+No obstante, una ventana de contexto más grande no garantiza automáticamente respuestas más precisas.
+
+## 3. Primera actividad: ¿todos los LLMs responden igual?
+
+Duración sugerida: 30 minutos
+
+Ahora podemos realizar la actividad comparativa que conversamos anteriormente.
+
+Abriremos cuatro aplicaciones de IA generativa: [ChatGPT](https://chatgpt.com/?utm_source=chatgpt.com), [DeepSeek](https://chat.deepseek.com/?utm_source=chatgpt.com), [Claude](https://claude.ai/?utm_source=chatgpt.com) y [Gemini](https://gemini.google.com/?utm_source=chatgpt.com).
+
+Cada estudiante utilizará el mismo prompt, con los mismos datos.
+
+### Datos del ejercicio
+
+| Mes     | Ventas USD |
+|---------|------------|
+| Enero   | 167.000    |
+| Febrero | 174.500    |
+| Marzo   | 174.600    |
+
+### Instrucción que proporcionaremos
+
+Prompt para la práctica
+
+Actúa como analista de Business Intelligence. Una empresa registra ventas de USD 167.000 en enero, USD 174.500 en febrero y USD 174.600 en marzo. Calcula las variaciones porcentuales mensuales, interpreta la evolución y redacta una conclusión ejecutiva de máximo 100 palabras. Explica los cálculos y no inventes causas de las variaciones.
+
+Copiar prompt
+
+Los estudiantes compararán las respuestas considerando exactitud numérica, interpretación, claridad y afirmaciones no sustentadas.
+
+### Resultados correctos para verificar
+
+$$
+g_{febrero}=\frac{174500-167000}{167000}\times100=4,49\%
+$$
+
+$$
+g_{marzo}=\frac{174600-174500}{174500}\times100\approx0,06\%
+$$
+
+La conclusión respaldada por los datos es que las ventas aumentaron en ambos períodos, pero el crecimiento mensual se desaceleró considerablemente.
+
+No podemos concluir, únicamente con estas cifras, que hubo mejores estrategias comerciales, variaciones en los precios, cambios de rentabilidad o una tendencia de largo plazo.
+
+### ¿Qué debe aprender el estudiante?
+
+Distintos asistentes pueden generar respuestas diferentes porque pueden utilizar modelos, configuraciones e instrucciones de sistema distintas.
+
+Incluso un mismo modelo puede producir respuestas variables según la configuración de generación.
+
+Por tanto, no podemos afirmar que un LLM es mejor que otro por una única respuesta.
+
+## 4. Arquitectura de un LLM: ¿qué ocurre dentro del modelo?
+
+### 4.1. La arquitectura Transformer
+
+La arquitectura Transformer fue presentada por Vaswani y colaboradores en 2017, en el trabajo Attention Is All You Need.
+
+Este enfoque utiliza mecanismos de atención para procesar relaciones entre elementos de una secuencia.
+
+Muchos LLMs modernos se construyen sobre variantes de esta arquitectura.
+
+![](images/clipboard-3770821431.png)
+
+### 4.2. ¿Qué es el mecanismo de atención?
+
+El mecanismo de atención permite que un modelo combine información de distintas posiciones del contexto para construir sus representaciones.
+
+Consideremos la frase:
+
+> La empresa presentó un incremento de ventas porque sus productos tuvieron mayor demanda.
+
+Para procesar la oración, el modelo necesita considerar las relaciones entre «empresa», «incremento», «ventas», «productos» y «demanda».
+
+En términos técnicos, la atención utiliza representaciones denominadas queries, keys y values para calcular cómo se combina la información.
+
+No es necesario desarrollar toda la formulación matemática en esta clase, pero sí comprender que la atención es un mecanismo computacional, no una garantía de comprensión factual.
+
+### 4.3. Etapas simplificadas del procesamiento
+
+1.  El usuario introduce una instrucción.
+
+2.  El texto se divide en tokens.
+
+3.  Los tokens se transforman en representaciones numéricas.
+
+4.  Las capas del Transformer procesan las relaciones contextuales.
+
+5.  El modelo calcula probabilidades de tokens de salida.
+
+6.  Se seleccionan tokens sucesivamente hasta producir la respuesta.
+
+### 4.4. Entrenamiento frente a inferencia
+
+Es importante diferenciar:
+
+| Proceso | Qué sucede |
+|----|----|
+| Preentrenamiento | Se optimizan los parámetros del modelo con grandes conjuntos de datos |
+| Fine-tuning | Se adapta un modelo previamente entrenado |
+| Inferencia | El modelo genera una respuesta usando los parámetros existentes |
+| RAG | Se recupera información externa para enriquecer el contexto |
+| Tool calling | El modelo solicita utilizar una herramienta, que ejecuta una aplicación externa |
+
+Cuando utilizamos Qwen3 mediante Ollama, no lo entrenamos desde cero. Simplemente ejecutamos un modelo previamente entrenado.
+
+## 5. Ecosistema de IA generativa: modelos, aplicaciones y agentes
+
+Una de las confusiones frecuentes es pensar que todas las herramientas de IA hacen exactamente lo mismo.
+
+### 5.1. Modelos
+
+Son los sistemas que procesan entradas y producen resultados.
+
+Ejemplos: GPT, Claude, Gemini, DeepSeek y Qwen.
+
+### 5.2. Aplicaciones
+
+Ofrecen una interfaz para interactuar con los modelos.
+
+Por ejemplo, ChatGPT permite conversar con modelos de OpenAI.
+
+### 5.3. Ejecutores de modelos
+
+Permiten ejecutar determinados modelos, incluso localmente.
+
+Ollama es un ejemplo de esta categoría.
+
+### 5.4. Agentes de IA
+
+Un agente puede utilizar modelos e instrumentos externos para realizar tareas con cierto grado de autonomía operativa y bajo restricciones definidas.
+
+Por ejemplo, OpenCode es una herramienta orientada al trabajo con código, archivos y comandos.
+
+Un agente empresarial de BI podría disponer de herramientas para consultar vistas autorizadas de una base de datos.
+
+### 5.5. Automatizadores
+
+Conectan diferentes aplicaciones y procesos.
+
+n8n permite diseñar flujos en los que se ejecutan tareas de manera secuencial o condicionada.
+
+No necesitamos confundir automatización y agentes: un flujo puede incorporar IA sin que el modelo decida qué herramienta utilizar.
+
+### ¿Cómo se conectan estas tecnologías?
+
+![](images/clipboard-479649660.png)Usuario
+
+Solicita un informe de ventas
+
+n8n
+
+Organiza el proceso y prepara indicadores
+
+Ollama
+
+Ejecuta Qwen3 localmente
+
+Resultado
+
+Informe ejecutivo generado mediante IA
+
+Esta es precisamente la arquitectura básica que conseguimos ejecutar en nuestro computador.
+
+## 6. Limitaciones de los LLMs
+
+### 6.1. Alucinaciones
+
+Los modelos pueden generar afirmaciones incorrectas o no sustentadas.
+
+En nuestra demostración con Ollama, cuando enviamos instrucciones sin incluir correctamente las cifras de ventas, el modelo generó indicadores inexistentes.
+
+Esto demuestra que necesitamos verificar las respuestas antes de utilizar la información.
+
+### 6.2. Errores numéricos
+
+Los LLMs no deben utilizarse como sustitutos automáticos de herramientas de cálculo.
+
+En BI, las agregaciones, porcentajes y validaciones deben obtenerse preferentemente mediante operaciones verificables en SQL, Python, R o DAX.
+
+### 6.3. Conocimiento incompleto
+
+Un LLM no conoce automáticamente la estructura de nuestra base de datos ni las definiciones institucionales de indicadores.
+
+Si le preguntamos por una columna que no hemos documentado, puede generar una interpretación incorrecta.
+
+### 6.4. Privacidad y confidencialidad
+
+No debemos introducir información sensible de clientes, instituciones o empresas en plataformas externas sin autorización y sin conocer las condiciones de tratamiento de datos.
+
+Para nuestras prácticas utilizaremos datos simulados.
+
+### 6.5. Dependencia del contexto
+
+Una instrucción ambigua o con información insuficiente puede producir respuestas genéricas o no verificables.
+
+Por eso es importante proporcionar contexto y validar el resultado.
+
+## 7. Aplicación conceptual a Business Intelligence
+
+El proceso tradicional de BI puede representarse así:
+
+`Base de datos → SQL → Transformación → Power BI → Informe`
+
+Con IA generativa podemos incorporar asistencia en diferentes etapas:
+
+| Etapa del BI   | Aplicación de IA                               |
+|----------------|------------------------------------------------|
+| Extracción     | Proponer consultas SQL                         |
+| Transformación | Ayudar a desarrollar código Python o R         |
+| Modelado       | Documentar variables y relaciones              |
+| Visualización  | Explicar medidas DAX y sugerir gráficos        |
+| Análisis       | Interpretar indicadores calculados             |
+| Comunicación   | Redactar informes ejecutivos                   |
+| Automatización | Coordinar el envío o publicación de resultados |
+
+La idea central no es reemplazar SQL, Python, R ni Power BI, sino integrar la inteligencia artificial para mejorar el trabajo analítico.
+
+## 9. Tipos de LLMs disponibles en el mercado: modelos gratuitos, aplicaciones y limitaciones
+
+Unidad 1 · Sección adicional de teoría · Actualizado al 11 de noviembre de 2026
+
+Esta sección se incorpora después del apartado «Ecosistema de IA generativa: modelos, aplicaciones y agentes», antes de estudiar sus aplicaciones en Business Intelligence.
+
+### 9.1. ¿Todos los LLMs son iguales?
+
+No. Los modelos de lenguaje se diferencian por su arquitectura, capacidad, entrenamiento, modalidad de entrada y salida, condiciones de acceso y recursos necesarios para ejecutarlos.
+
+Podemos clasificarlos de la siguiente manera:
+
+| Tipo de modelo | Característica | Ejemplo de aplicación en BI |
+|----|----|----|
+| Propósito general | Comprende instrucciones y genera texto | Elaborar informes ejecutivos |
+| Especializado en código | Orientado a generar, revisar y explicar programación | Crear consultas SQL o revisar scripts Python |
+| Orientado al razonamiento | Optimizado para resolver problemas que requieren varios pasos | Analizar inconsistencias en reglas de negocio |
+| Multimodal | Procesa más de una modalidad, como texto e imágenes | Interpretar capturas de dashboards |
+| Modelo pequeño (SLM) | Menor tamaño y requerimientos de infraestructura | Clasificar comentarios o redactar resúmenes locales |
+| Modelo con pesos disponibles | Permite descargar y ejecutar sus parámetros bajo una licencia | Ejecutar un asistente local con Ollama |
+| Modelo propietario | Su acceso y despliegue dependen del proveedor | Utilizar modelos mediante una plataforma comercial |
+
+Estas categorías no son excluyentes. Un modelo puede ser pequeño, multimodal y especializado en código al mismo tiempo.
+
+Además, pesos disponibles no significa necesariamente código abierto ni uso comercial irrestricto. Debemos revisar la licencia de cada modelo.
+
+### 9.2. Principales asistentes gratuitos del mercado
+
+Para esta comparación debemos distinguir el modelo (GPT, Claude, Gemini, DeepSeek) de la aplicación (ChatGPT, Claude.ai, Gemini, DeepSeek Chat).
+
+La siguiente tabla compara aplicaciones accesibles desde el navegador. Las modalidades gratuitas pueden tener restricciones de uso diferentes según el proveedor.
+
++--------------+--------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+| Plataforma   | ¿Para qué sirve en BI?                                                                           | Acceso gratuito y limitaciones                                                                                               |
++==============+==================================================================================================+==============================================================================================================================+
+| ChatGPT      | Explicar SQL, apoyar análisis de archivos, revisar Python, redactar informes                     | Plan gratuito con límites independientes para modelos, archivos, imágenes y análisis de datos.                               |
+|              |                                                                                                  |                                                                                                                              |
+|              |                                                                                                  | OpenAI Help Center                                                                                                           |
++--------------+--------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+| Gemini       | Analizar documentos, explicar código, sintetizar información y trabajar con contenido multimodal | Acceso sin suscripción de pago, con límites que dependen del modelo, función y complejidad de la solicitud.                  |
+|              |                                                                                                  |                                                                                                                              |
+|              |                                                                                                  | Ayuda de Aplicaciones de Gemini                                                                                              |
++--------------+--------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+| Claude       | Redacción técnica, revisión de código, documentación y análisis de textos                        | Plan gratuito para uso ocasional; el límite de sesión se restablece cada cinco horas y la capacidad disponible puede variar. |
+|              |                                                                                                  |                                                                                                                              |
+|              |                                                                                                  | Centro de ayuda de Anthropic+1                                                                                               |
++--------------+--------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+| DeepSeek     | Generar código, explicar procedimientos analíticos y resolver problemas técnicos                 | DeepSeek ofrece una aplicación gratuita. No puedo confirmar una cuota fija vigente de mensajes para todos los usuarios.      |
+|              |                                                                                                  |                                                                                                                              |
+|              |                                                                                                  | Introducing DeepSeek App                                                                                                     |
++--------------+--------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+| Perplexity   | Investigar metodologías, localizar documentación SQL y recopilar referencias verificables        | Plan gratuito centrado en búsqueda; las búsquedas avanzadas y cargas de archivos son limitadas.                              |
+|              |                                                                                                  |                                                                                                                              |
+|              |                                                                                                  | Perplexity Help Center                                                                                                       |
++--------------+--------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+| Mistral Vibe | Redactar, investigar, generar código y experimentar con asistentes                               | Plan gratuito con mensajes, búsquedas y sesiones de programación limitados.                                                  |
+|              |                                                                                                  |                                                                                                                              |
+|              |                                                                                                  | AI chat and coding agent+1                                                                                                   |
++--------------+--------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------+
+
+Nota: los usos indicados son aplicaciones posibles para la enseñanza de BI, no una clasificación de desempeño ni una garantía de exactitud. La disponibilidad de herramientas puede variar entre cuentas y países.
+
+### 9.3. ¿Qué plataforma elegir según la tarea?
+
+![](images/clipboard-1226297170.png)
+
+ChatGPT — Análisis de datos y programación
+
+Puede utilizarse para explicar código SQL, Python y R; interpretar resultados, preparar documentación y explorar archivos de datos.
+
+Limitación: los resultados numéricos y el código propuesto requieren validación. El acceso a herramientas avanzadas está sujeto a límites.
+
+![](images/clipboard-2357697701.png)
+
+Gemini — Documentos, contenido multimodal y código
+
+Podemos utilizarlo para revisar documentos empresariales, comparar explicaciones de indicadores y analizar imágenes o tablas, cuando la función esté disponible.
+
+Limitación: las cuotas y el acceso a determinados modelos y funciones cambian según el plan.
+
+![](images/clipboard-3885643030.png)
+
+Claude — Redacción y revisión técnica
+
+Es una alternativa para comparar informes ejecutivos, evaluar instrucciones y revisar scripts de programación.
+
+Limitación: su capacidad gratuita de uso es restringida y las conversaciones extensas pueden consumirla más rápidamente.
+
+![](images/clipboard-549898876.png)
+
+DeepSeek — Razonamiento y programación
+
+Podemos emplearlo para solicitar explicaciones matemáticas, construir consultas SQL y comparar soluciones de Python.
+
+Limitación: la gratuidad de la aplicación web no equivale a acceso ilimitado o gratuito a su API.
+
+![](images/clipboard-4209205620.png)
+
+Perplexity — Investigación con referencias
+
+Resulta útil para localizar documentación técnica, artículos académicos y fuentes institucionales que después revisaremos directamente.
+
+Limitación: las citas también deben verificarse y el plan gratuito restringe el acceso avanzado.
+
+Importante para los estudiantes: estas son alternativas para diferentes necesidades, no un ranking. El desempeño debe comprobarse con pruebas representativas de la tarea que necesitamos resolver.
+
+### 9.4. LLMs gratuitos que podemos ejecutar localmente
+
+Hasta ahora hablamos de aplicaciones web. Existe otra modalidad: descargar un modelo y ejecutarlo en nuestro propio computador.
+
+Para ello podemos utilizar Ollama.
+
+La biblioteca de Ollama incluye distintas familias de modelos descargables, con tamaños y capacidades diferentes.
+
+ollama.com
+
+| Familia de modelos | Características | Aplicación posible en BI |
+|----|----|----|
+| Qwen | Modelos de distintos tamaños, con capacidades multilingües, razonamiento y herramientas | Informes, SQL y asistentes locales |
+| Llama | Familia de modelos de Meta, con versiones pequeñas y grandes | Resúmenes, clasificación y análisis textual |
+| Gemma | Modelos de Google, con versiones compactas y multimodales | Asistencia documental e interpretación de imágenes |
+| DeepSeek-R1 | Familia orientada al razonamiento | Problemas analíticos de varios pasos |
+| Mistral | Familia con alternativas relativamente compactas | Procesamiento y generación de texto |
+| Qwen Coder | Modelos especializados en programación | Generar, explicar y corregir código |
+
+Estas posibilidades están documentadas en el catálogo de Ollama.
+
+ollama.com+3
+
+#### ¿Qué significan 1.7B, 4B, 8B o 14B?
+
+La letra B significa billion, es decir, mil millones de parámetros.
+
+Los parámetros son valores numéricos aprendidos durante el entrenamiento que intervienen en el procesamiento del modelo.
+
+Por ejemplo:
+
+Qwen3 1.7B
+
+1,7 mil millones
+
+Qwen3 4B
+
+4 mil millones
+
+Qwen3 8B
+
+8 mil millones
+
+Qwen3 14B
+
+14 mil millones
+
+Comparación del número de parámetros, no de calidad o rendimiento.
+
+En general, un modelo con más parámetros puede requerir más memoria y capacidad de procesamiento. No obstante, más parámetros no garantizan mejor desempeño en todas las tareas.
+
+Por ejemplo, Ollama publica los siguientes tamaños aproximados de descarga para determinadas variantes de Qwen3:
+
+| Modelo     | Tamaño publicado |
+|------------|------------------|
+| Qwen3 1.7B | 1,4 GB           |
+| Qwen3 4B   | 2,5 GB           |
+| Qwen3 8B   | 5,2 GB           |
+| Qwen3 14B  | 9,3 GB           |
+
+qwen3
+
+Estos tamaños corresponden a los archivos distribuidos; no representan toda la memoria RAM necesaria durante la ejecución.
+
+En nuestra práctica utilizamos `qwen3:1.7b`, un modelo relativamente pequeño. Es adecuado para demostrar cómo funciona una solicitud local, pero no debemos asumir que resolverá correctamente problemas complejos de SQL o razonamiento.
+
+### 9.5. ¿Cuáles son las limitaciones de los LLMs gratuitos?
+
+Podemos identificar seis limitaciones importantes:
+
+1\. Límites de uso. Algunas aplicaciones restringen mensajes, herramientas, cargas de archivos o capacidad de procesamiento.
+
+2\. Restricciones de modelos. Los planes gratuitos pueden ofrecer menos opciones o menor acceso a determinados modelos.
+
+3\. Infraestructura. Los modelos locales utilizan memoria RAM, procesamiento, almacenamiento y energía.
+
+4\. Privacidad. Los servicios en la nube requieren revisar las políticas de tratamiento de datos. Los modelos locales también necesitan controles de acceso.
+
+5\. Exactitud. Ningún LLM garantiza resultados correctos en todas las tareas. Es fundamental verificar SQL, operaciones matemáticas e interpretaciones.
+
+6\. Integraciones. El acceso gratuito a una página de chat no significa que podamos conectarla gratuitamente con n8n o con aplicaciones mediante API.
+
+### 9.6. ¿Cuál utilizaríamos para cada necesidad del diplomado?
+
+Esta es una matriz de selección didáctica, no una clasificación experimental de rendimiento:
+
+| Necesidad | Alternativa para probar | Verificación necesaria |
+|----|----|----|
+| Comprender conceptos de IA | ChatGPT, Gemini, Claude o DeepSeek | Contrastar definiciones |
+| Generar SQL | ChatGPT, DeepSeek o Claude | Ejecutar en DBeaver |
+| Revisar Python o R | Cualquier asistente con capacidad de código | Ejecutar pruebas |
+| Investigar documentación técnica | Perplexity y fuentes oficiales | Abrir las referencias originales |
+| Redactar informes ejecutivos | ChatGPT, Gemini, Claude o un modelo local | Validar indicadores y conclusiones |
+| Ejecutar IA local | Ollama + Qwen, Llama o Gemma | Comprobar recursos y calidad |
+| Automatizar informes | n8n + un modelo compatible | Validar el flujo completo |
