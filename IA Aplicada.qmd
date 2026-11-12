@@ -60,11 +60,15 @@ En Business Intelligence podemos utilizarla para explicar indicadores, redactar 
 
 ### Diferencia entre BI, ML e IA generativa
 
-| Tecnología | Pregunta principal | Ejemplo |
-|----|----|----|
-| Business Intelligence | ¿Qué ocurrió? | Las ventas aumentaron un 4,49 % |
-| Machine Learning | ¿Qué podría ocurrir? | Predicción de ventas de abril |
-| IA generativa | ¿Cómo podemos interpretar o comunicar la información? | Elaboración de un informe ejecutivo |
++-----------------------+-------------------------------------------------------+-------------------------------------+
+| Tecnología            | Pregunta principal                                    | Ejemplo                             |
++=======================+=======================================================+=====================================+
+| Business Intelligence | ¿Qué ocurrió?                                         | Las ventas aumentaron un 4,49 %     |
++-----------------------+-------------------------------------------------------+-------------------------------------+
+| Machine Learning      | ¿Qué podría ocurrir?                                  | Predicción de ventas de abril       |
++-----------------------+-------------------------------------------------------+-------------------------------------+
+| IA generativa         | ¿Cómo podemos interpretar o comunicar la información? | Elaboración de un informe ejecutivo |
++-----------------------+-------------------------------------------------------+-------------------------------------+
 
 Esta clasificación es didáctica: las herramientas pueden combinarse y el BI también puede incorporar modelos predictivos.
 
@@ -246,13 +250,19 @@ No es necesario desarrollar toda la formulación matemática en esta clase, pero
 
 Es importante diferenciar:
 
-| Proceso | Qué sucede |
-|----|----|
-| Preentrenamiento | Se optimizan los parámetros del modelo con grandes conjuntos de datos |
-| Fine-tuning | Se adapta un modelo previamente entrenado |
-| Inferencia | El modelo genera una respuesta usando los parámetros existentes |
-| RAG | Se recupera información externa para enriquecer el contexto |
-| Tool calling | El modelo solicita utilizar una herramienta, que ejecuta una aplicación externa |
++----------------------------------+---------------------------------------------------------------------------------+
+| Proceso                          | Qué sucede                                                                      |
++==================================+=================================================================================+
+| Preentrenamiento                 | Se optimizan los parámetros del modelo con grandes conjuntos de datos           |
++----------------------------------+---------------------------------------------------------------------------------+
+| Fine-tuning                      | Se adapta un modelo previamente entrenado                                       |
++----------------------------------+---------------------------------------------------------------------------------+
+| Inferencia                       | El modelo genera una respuesta usando los parámetros existentes                 |
++----------------------------------+---------------------------------------------------------------------------------+
+| RAG                              | Se recupera información externa para enriquecer el contexto                     |
++----------------------------------+---------------------------------------------------------------------------------+
+| Tool calling                     | El modelo solicita utilizar una herramienta, que ejecuta una aplicación externa |
++----------------------------------+---------------------------------------------------------------------------------+
 
 Cuando utilizamos Qwen3 mediante Ollama, no lo entrenamos desde cero. Simplemente ejecutamos un modelo previamente entrenado.
 
@@ -380,15 +390,23 @@ No. Los modelos de lenguaje se diferencian por su arquitectura, capacidad, entre
 
 Podemos clasificarlos de la siguiente manera:
 
-| Tipo de modelo | Característica | Ejemplo de aplicación en BI |
-|----|----|----|
-| Propósito general | Comprende instrucciones y genera texto | Elaborar informes ejecutivos |
-| Especializado en código | Orientado a generar, revisar y explicar programación | Crear consultas SQL o revisar scripts Python |
-| Orientado al razonamiento | Optimizado para resolver problemas que requieren varios pasos | Analizar inconsistencias en reglas de negocio |
-| Multimodal | Procesa más de una modalidad, como texto e imágenes | Interpretar capturas de dashboards |
-| Modelo pequeño (SLM) | Menor tamaño y requerimientos de infraestructura | Clasificar comentarios o redactar resúmenes locales |
-| Modelo con pesos disponibles | Permite descargar y ejecutar sus parámetros bajo una licencia | Ejecutar un asistente local con Ollama |
-| Modelo propietario | Su acceso y despliegue dependen del proveedor | Utilizar modelos mediante una plataforma comercial |
++------------------------------+---------------------------------------------------------------+-----------------------------------------------------+
+| Tipo de modelo               | Característica                                                | Ejemplo de aplicación en BI                         |
++==============================+===============================================================+=====================================================+
+| Propósito general            | Comprende instrucciones y genera texto                        | Elaborar informes ejecutivos                        |
++------------------------------+---------------------------------------------------------------+-----------------------------------------------------+
+| Especializado en código      | Orientado a generar, revisar y explicar programación          | Crear consultas SQL o revisar scripts Python        |
++------------------------------+---------------------------------------------------------------+-----------------------------------------------------+
+| Orientado al razonamiento    | Optimizado para resolver problemas que requieren varios pasos | Analizar inconsistencias en reglas de negocio       |
++------------------------------+---------------------------------------------------------------+-----------------------------------------------------+
+| Multimodal                   | Procesa más de una modalidad, como texto e imágenes           | Interpretar capturas de dashboards                  |
++------------------------------+---------------------------------------------------------------+-----------------------------------------------------+
+| Modelo pequeño (SLM)         | Menor tamaño y requerimientos de infraestructura              | Clasificar comentarios o redactar resúmenes locales |
++------------------------------+---------------------------------------------------------------+-----------------------------------------------------+
+| Modelo con pesos disponibles | Permite descargar y ejecutar sus parámetros bajo una licencia | Ejecutar un asistente local con Ollama              |
++------------------------------+---------------------------------------------------------------+-----------------------------------------------------+
+| Modelo propietario           | Su acceso y despliegue dependen del proveedor                 | Utilizar modelos mediante una plataforma comercial  |
++------------------------------+---------------------------------------------------------------+-----------------------------------------------------+
 
 Estas categorías no son excluyentes. Un modelo puede ser pequeño, multimodal y especializado en código al mismo tiempo.
 
@@ -484,14 +502,21 @@ La biblioteca de Ollama incluye distintas familias de modelos descargables, con 
 
 ollama.com
 
-| Familia de modelos | Características | Aplicación posible en BI |
-|----|----|----|
-| Qwen | Modelos de distintos tamaños, con capacidades multilingües, razonamiento y herramientas | Informes, SQL y asistentes locales |
-| Llama | Familia de modelos de Meta, con versiones pequeñas y grandes | Resúmenes, clasificación y análisis textual |
-| Gemma | Modelos de Google, con versiones compactas y multimodales | Asistencia documental e interpretación de imágenes |
-| DeepSeek-R1 | Familia orientada al razonamiento | Problemas analíticos de varios pasos |
-| Mistral | Familia con alternativas relativamente compactas | Procesamiento y generación de texto |
-| Qwen Coder | Modelos especializados en programación | Generar, explicar y corregir código |
++----------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------+
+| Familia de modelos   | Características                                                                         | Aplicación posible en BI                           |
++======================+=========================================================================================+====================================================+
+| Qwen                 | Modelos de distintos tamaños, con capacidades multilingües, razonamiento y herramientas | Informes, SQL y asistentes locales                 |
++----------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------+
+| Llama                | Familia de modelos de Meta, con versiones pequeñas y grandes                            | Resúmenes, clasificación y análisis textual        |
++----------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------+
+| Gemma                | Modelos de Google, con versiones compactas y multimodales                               | Asistencia documental e interpretación de imágenes |
++----------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------+
+| DeepSeek-R1          | Familia orientada al razonamiento                                                       | Problemas analíticos de varios pasos               |
++----------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------+
+| Mistral              | Familia con alternativas relativamente compactas                                        | Procesamiento y generación de texto                |
++----------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------+
+| Qwen Coder           | Modelos especializados en programación                                                  | Generar, explicar y corregir código                |
++----------------------+-----------------------------------------------------------------------------------------+----------------------------------------------------+
 
 Estas posibilidades están documentadas en el catálogo de Ollama.
 
@@ -560,12 +585,558 @@ Podemos identificar seis limitaciones importantes:
 
 Esta es una matriz de selección didáctica, no una clasificación experimental de rendimiento:
 
-| Necesidad | Alternativa para probar | Verificación necesaria |
++----------------------------------+---------------------------------------------+------------------------------------+
+| Necesidad                        | Alternativa para probar                     | Verificación necesaria             |
++==================================+=============================================+====================================+
+| Comprender conceptos de IA       | ChatGPT, Gemini, Claude o DeepSeek          | Contrastar definiciones            |
++----------------------------------+---------------------------------------------+------------------------------------+
+| Generar SQL                      | ChatGPT, DeepSeek o Claude                  | Ejecutar en DBeaver                |
++----------------------------------+---------------------------------------------+------------------------------------+
+| Revisar Python o R               | Cualquier asistente con capacidad de código | Ejecutar pruebas                   |
++----------------------------------+---------------------------------------------+------------------------------------+
+| Investigar documentación técnica | Perplexity y fuentes oficiales              | Abrir las referencias originales   |
++----------------------------------+---------------------------------------------+------------------------------------+
+| Redactar informes ejecutivos     | ChatGPT, Gemini, Claude o un modelo local   | Validar indicadores y conclusiones |
++----------------------------------+---------------------------------------------+------------------------------------+
+| Ejecutar IA local                | Ollama + Qwen, Llama o Gemma                | Comprobar recursos y calidad       |
++----------------------------------+---------------------------------------------+------------------------------------+
+| Automatizar informes             | n8n + un modelo compatible                  | Validar el flujo completo          |
++----------------------------------+---------------------------------------------+------------------------------------+
+
+# **Unidad 2. Prompt Engineering aplicado a Business Intelligence**
+
+# **2.1. Tipos de prompts**
+
+## **2.1.1. ¿Qué es Prompt Engineering?**
+
+El **Prompt Engineering**, o ingeniería de instrucciones, es el proceso sistemático de diseñar, probar y mejorar las instrucciones que reciben los modelos de inteligencia artificial para obtener respuestas que satisfagan determinados objetivos.
+
+No consiste simplemente en escribir preguntas más largas.
+
+Implica especificar correctamente:
+
+- Qué tarea debe realizar el modelo.
+
+- Qué información tiene disponible.
+
+- Qué reglas debe respetar.
+
+- Cómo debe presentar sus resultados.
+
+- Cómo comprobaremos que respondió correctamente.
+
+La documentación técnica de OpenAI y Anthropic destaca la importancia de instrucciones claras, ejemplos relevantes y evaluaciones para conseguir resultados consistentes.
+
+OpenAI API+1
+
+### **¿Por qué es importante en Business Intelligence?**
+
+Imaginemos que una empresa necesita un informe sobre sus ventas.
+
+El analista puede proporcionar la siguiente instrucción:
+
+> Analiza las ventas de la empresa.
+
+Pero esta instrucción es ambigua. No especifica las variables, el período, las métricas ni el resultado esperado.
+
+En cambio, podríamos solicitar:
+
+> Actúa como analista de Business Intelligence. Utiliza las ventas mensuales suministradas, calcula las variaciones porcentuales, identifica los principales hallazgos y redacta una conclusión ejecutiva. No inventes explicaciones causales.
+
+La segunda instrucción establece un objetivo más claro y proporciona restricciones relevantes.
+
+En ambos casos estamos utilizando el mismo modelo, pero modificamos la información y las instrucciones disponibles.
+
+## **2.1.2. Zero-shot prompting**
+
+El *zero-shot prompting* consiste en solicitar una tarea al modelo **sin proporcionar ejemplos resueltos de cómo debe realizarla**.
+
+El modelo utiliza sus capacidades previamente aprendidas y la información incluida en la solicitud.
+
+Zero-shot
+
+**Sin ejemplos**
+
+Prompt
+
+Clasifica el siguiente comentario de un cliente como positivo, negativo o neutral:
+
+«La transferencia se procesó correctamente, pero tardó más de lo esperado».
+
+**Respuesta posible:** Negativo, si el modelo prioriza la demora reportada.
+
+La clasificación no es necesariamente única: el comentario también contiene una valoración positiva. Una definición empresarial de las categorías ayudaría a reducir esa ambigüedad.
+
+**Aplicaciones en BI:** clasificación exploratoria de comentarios, explicación de indicadores, generación inicial de consultas SQL o resúmenes de información.
+
+## **2.1.3. One-shot prompting**
+
+En *one-shot prompting* proporcionamos **un ejemplo de entrada y su respuesta esperada** antes de presentar la nueva tarea.
+
+El ejemplo demuestra el patrón que queremos reproducir.
+
+One-shot
+
+**Un ejemplo**
+
+EJEMPLO
+
+Comentario: «La aplicación presenta errores al iniciar sesión».
+
+Clasificación: Negativo.
+
+NUEVA ENTRADA
+
+Comentario: «El asesor resolvió rápidamente mi solicitud».
+
+Clasificación:
+
+**Respuesta esperada:** Positivo.
+
+En este caso, el modelo recibe un ejemplo del formato y la tarea.
+
+La utilidad principal es orientar el comportamiento sin modificar los parámetros del modelo.
+
+## **2.1.4. Few-shot prompting**
+
+El *few-shot prompting* consiste en proporcionar **varios ejemplos representativos** de la tarea que queremos resolver.
+
+Es particularmente útil cuando necesitamos establecer criterios de clasificación o formatos de respuesta.
+
+Ejemplo:
+
+```         
+Clasifica cada reclamo según su categoría.  Ejemplo 1: Texto: "El cajero no entregó mi dinero". Categoría: Cajero automático  Ejemplo 2: Texto: "No reconozco una compra con mi tarjeta". Categoría: Tarjeta de crédito  Ejemplo 3: Texto: "La transferencia no llegó al destinatario". Categoría: Transferencias  Ahora clasifica: Texto: "Me cobraron dos veces por una compra con mi tarjeta". Categoría:
+```
+
+La respuesta dependerá del catálogo institucional de categorías y de la interpretación de la operación. Si es necesario distinguir tarjeta de débito y tarjeta de crédito, el prompt deberá incluir esa regla.
+
+### **Comparación de las tres técnicas**
+
+| Técnica | Ejemplos proporcionados | Uso recomendado |
 |----|----|----|
-| Comprender conceptos de IA | ChatGPT, Gemini, Claude o DeepSeek | Contrastar definiciones |
-| Generar SQL | ChatGPT, DeepSeek o Claude | Ejecutar en DBeaver |
-| Revisar Python o R | Cualquier asistente con capacidad de código | Ejecutar pruebas |
-| Investigar documentación técnica | Perplexity y fuentes oficiales | Abrir las referencias originales |
-| Redactar informes ejecutivos | ChatGPT, Gemini, Claude o un modelo local | Validar indicadores y conclusiones |
-| Ejecutar IA local | Ollama + Qwen, Llama o Gemma | Comprobar recursos y calidad |
-| Automatizar informes | n8n + un modelo compatible | Validar el flujo completo |
+| Zero-shot | 0 | Tareas sencillas o exploratorias |
+| One-shot | 1 | Mostrar un formato o patrón |
+| Few-shot | Varios | Clasificaciones y formatos que requieren consistencia |
+
+### **Comparación conceptual**
+
+**Zero-shot**
+
+Instrucción → Modelo → Respuesta
+
+**One-shot**
+
+1 ejemplo + instrucción → Modelo → Respuesta
+
+**Few-shot**
+
+Varios ejemplos + instrucción → Modelo → Respuesta
+
+Estos métodos están asociados al aprendizaje a partir del contexto (*in-context learning*). No implican volver a entrenar el LLM.
+
+OpenAI API
+
+## **2.1.5. Role prompting**
+
+El *role prompting* consiste en asignar al modelo un papel o función dentro de la tarea.
+
+Por ejemplo:
+
+> Actúa como econometrista especializado en análisis de series temporales.
+
+O:
+
+> Actúa como analista de riesgos financieros de una entidad bancaria.
+
+El rol ayuda a definir el enfoque, la terminología y el tipo de respuesta esperado.
+
+Sin embargo, **asignar un rol profesional no garantiza que el modelo posea conocimientos correctos ni sustituye la validación técnica**.
+
+### **Ejemplo aplicado a Power BI**
+
+Prompt básico:
+
+> Explícame este código DAX.
+
+Prompt con rol:
+
+> Actúa como especialista en modelado semántico de Power BI. Explica la medida DAX suministrada, identifica el contexto de filtros y señala posibles problemas de rendimiento. No supongas relaciones entre tablas que no se hayan documentado.
+
+El segundo ejemplo proporciona un enfoque y controles más específicos.
+
+## **2.1.6. Prompts de salida estructurada**
+
+En determinadas aplicaciones necesitamos que el modelo devuelva información siguiendo un formato previamente definido.
+
+Por ejemplo, JSON:
+
+```         
+{   "indicador": "crecimiento_ventas",   "periodo": "febrero_2026",   "valor_pct": 4.49,   "interpretacion": "Las ventas aumentaron respecto a enero." }
+```
+
+Esta estructura facilita que otros programas procesen la respuesta.
+
+En Business Intelligence, una salida estructurada puede utilizarse para construir reportes, alimentar aplicaciones o registrar resultados.
+
+No obstante, **solicitar JSON en el prompt no garantiza por sí solo que la salida sea válida**. Las aplicaciones deben validar su estructura y, cuando el servicio lo permita, utilizar mecanismos específicos de salida estructurada.
+
+OpenAI API
+
+# **2.2. Diseño de prompts**
+
+Una vez que conocemos los tipos de prompts, debemos aprender a construir instrucciones que puedan reutilizarse en problemas empresariales.
+
+## **2.2.1. Componentes de un prompt estructurado**
+
+Propongo enseñar seis componentes fundamentales.
+
+**1**
+
+**Rol**
+
+¿Desde qué perspectiva responderá?
+
+**2**
+
+**Objetivo**
+
+¿Qué tarea concreta realizará?
+
+**3**
+
+**Contexto y datos**
+
+¿Con qué información trabajará?
+
+**4**
+
+**Restricciones**
+
+¿Qué no puede hacer o asumir?
+
+**5**
+
+**Formato de salida**
+
+¿Cómo debe entregar los resultados?
+
+**6**
+
+**Criterios de verificación**
+
+¿Cómo determinaremos si respondió correctamente?
+
+Esta es una plantilla pedagógica que podemos adaptar según la complejidad del problema.
+
+No todos los prompts requieren los seis elementos, pero resulta útil para enseñar a los estudiantes a no omitir información crítica.
+
+## **2.2.2. Ejemplo completo: análisis de ventas**
+
+Utilizaremos los datos de la empresa ficticia que trabajamos en la Unidad 1.
+
+| Mes     | Ventas USD |
+|---------|------------|
+| Enero   | 167.000    |
+| Febrero | 174.500    |
+| Marzo   | 174.600    |
+
+EJEMPLO DE PROMPT ESTRUCTURADO
+
+```         
+ ROL: Actúa como analista de Business Intelligence.  OBJETIVO: Analiza la evolución mensual de las ventas de una empresa comercial.  DATOS: Enero: USD 167000 Febrero: USD 174500 Marzo: USD 174600  INSTRUCCIONES: - Calcula las variaciones porcentuales mensuales. - Identifica los principales hallazgos. - Distingue hechos de hipótesis.  RESTRICCIONES: - No inventes causas del crecimiento. - No agregues cifras no proporcionadas. - No realices pronósticos. - Indica las limitaciones de los datos.  FORMATO: 1. Tabla de indicadores. 2. Interpretación. 3. Conclusión ejecutiva de máximo 100 palabras.  VERIFICACIÓN: Incluye la fórmula utilizada y las cifras que permiten reproducir cada cálculo.   
+```
+
+### **¿Por qué es mejor que una instrucción genérica?**
+
+Porque reduce la ambigüedad en aspectos concretos: identifica los datos, especifica la tarea, delimita las inferencias permitidas y establece un formato evaluable.
+
+Eso no elimina la posibilidad de errores; facilita su detección.
+
+## **2.2.3. Delimitadores y separación entre instrucciones y datos**
+
+En determinadas tareas, el modelo recibe documentos extensos o información procedente de varias fuentes.
+
+Podemos utilizar encabezados y delimitadores para separar las instrucciones de los datos.
+
+Por ejemplo:
+
+```         
+INSTRUCCIÓN: Resume únicamente los registros suministrados.  DATOS: """ Ciudad: Quito Ventas: 85000  Ciudad: Cuenca Ventas: 62000 """  FORMATO: Tabla ordenada de mayor a menor venta.
+```
+
+Esta separación ayuda a identificar qué parte es una instrucción y qué parte constituye información para analizar.
+
+OpenAI API+1
+
+También aporta claridad cuando incorporamos documentos empresariales.
+
+## **2.2.4. Prompt Engineering y diccionario de datos**
+
+En Business Intelligence, un prompt no debe utilizar variables cuya interpretación no haya sido definida.
+
+Por ejemplo, si una base contiene las variables:
+
+`saldo_total`, `saldo_vencido`, `fecha_corte`
+
+El modelo necesita conocer qué representa cada una.
+
+Sin esa información, podría interpretar incorrectamente la morosidad, la cartera improductiva o la periodicidad de los registros.
+
+La calidad del prompt depende también de la calidad del contexto empresarial.
+
+# **2.3. Optimización de prompts**
+
+## **2.3.1. ¿Qué significa optimizar un prompt?**
+
+La optimización consiste en modificar sistemáticamente una instrucción para mejorar su desempeño frente a criterios definidos.
+
+No debemos asumir que agregar más palabras produce necesariamente mejores respuestas.
+
+Un prompt puede ser extenso y seguir siendo ambiguo, contradictorio o insuficiente.
+
+### **Ciclo de optimización**
+
+**1. Diseñar prompt inicial**
+
+**2. Ejecutar sobre casos de prueba**
+
+**3. Evaluar resultados**
+
+**4. Identificar errores**
+
+**5. Modificar y volver a evaluar**
+
+Esto se parece a otros procesos de experimentación que los estudiantes ya conocen de Machine Learning: formulamos una alternativa, la probamos y evaluamos su desempeño.
+
+Sin embargo, optimizar un prompt no es equivalente a entrenar los parámetros de un modelo.
+
+## **2.3.2. Evaluación cuantitativa de prompts**
+
+Supongamos que tenemos 20 preguntas empresariales para las cuales conocemos la respuesta correcta.
+
+Podemos evaluar un prompt mediante:
+
+\\\[ Exactitud=\\frac{\\text{Respuestas correctas}}{\\text{Total de preguntas}}\\times100 \\\]
+
+Si obtiene 17 respuestas correctas:
+
+\\\[ Exactitud=\\frac{17}{20}\\times100=85\\% \\\]
+
+Este indicador mide el desempeño en ese conjunto concreto de preguntas, bajo las condiciones de la prueba.
+
+No demuestra que el prompt tenga una exactitud del 85 % para cualquier problema empresarial.
+
+### **Matriz de evaluación propuesta**
+
+| Criterio       | Qué evaluamos                            |
+|----------------|------------------------------------------|
+| Exactitud      | Cifras y afirmaciones correctas          |
+| Completitud    | Cumplimiento de los requerimientos       |
+| Consistencia   | Estabilidad entre ejecuciones            |
+| Fundamentación | Uso de información respaldada            |
+| Formato        | Cumplimiento de la estructura solicitada |
+| Seguridad      | Respeto de restricciones y permisos      |
+
+Podemos calificar cada criterio con una escala definida previamente, por ejemplo de 0 a 2 puntos, y obtener un máximo de 12 puntos.
+
+Esta rúbrica es una propuesta docente; no es una métrica estándar universal.
+
+## **2.3.3. Comparación controlada de prompts**
+
+Para comparar dos instrucciones debemos controlar, en lo posible, otras variables.
+
+Conviene mantener constantes:
+
+- El modelo y su versión.
+
+- Los datos proporcionados.
+
+- La tarea evaluada.
+
+- Las condiciones de ejecución y parámetros de generación.
+
+- El procedimiento de evaluación.
+
+Así podemos atribuir con mayor fundamento las diferencias observadas al cambio en el prompt.
+
+En sistemas de producción, la documentación de OpenAI recomienda realizar evaluaciones con casos representativos y controlar las versiones del modelo y de las instrucciones.
+
+OpenAI API
+
+## **2.3.4. Reducción de alucinaciones**
+
+Recordemos lo que ocurrió en nuestra práctica con Ollama.
+
+Cuando el modelo recibió instrucciones sin incluir correctamente las cifras, generó indicadores inexistentes.
+
+Posteriormente mejoramos el prompt e incorporamos los datos reales.
+
+La estrategia correcta no consiste solamente en ordenar «no alucines».
+
+Debemos proporcionar datos verificables, limitar las inferencias, distinguir información faltante y validar los resultados.
+
+**Ejemplo de restricción:**
+
+> Utiliza exclusivamente los indicadores suministrados. Si no dispones de información suficiente para explicar una variación, indica que no es posible determinar su causa.
+
+Esta instrucción ayuda a delimitar la tarea, pero sigue siendo necesario verificar la salida.
+
+## **2.3.5. ¿Qué es la temperatura?**
+
+La temperatura es un parámetro de generación que, cuando está disponible, modifica la distribución utilizada para seleccionar tokens.
+
+En términos generales:
+
+- Una temperatura más baja tiende a favorecer respuestas menos variables.
+
+- Una temperatura más alta puede incrementar la diversidad de las respuestas.
+
+No todos los modelos exponen o utilizan este parámetro del mismo modo.
+
+**Importante:** reducir la temperatura no garantiza exactitud factual ni resultados completamente deterministas.
+
+Para un informe ejecutivo conviene evaluar configuraciones que prioricen consistencia y apego a la evidencia.
+
+# **2.4. Casos de aplicación de Prompt Engineering en Business Intelligence**
+
+Esta sección conecta los conceptos anteriores con las herramientas que los estudiantes aprendieron en los módulos previos.
+
+## **Caso 1. Generación de SQL con DBeaver**
+
+### **Problema**
+
+Necesitamos calcular las ventas mensuales por ciudad utilizando PostgreSQL.
+
+En lugar de solicitar simplemente «genera SQL», debemos proporcionar la estructura conocida de la tabla.
+
+```         
+ Actúa como especialista en PostgreSQL.  Tenemos una tabla llamada ventas con: - fecha: DATE - ciudad: VARCHAR - importe: NUMERIC  Genera una consulta SELECT que: 1. Calcule ventas mensuales por ciudad. 2. Calcule la variación porcentual mensual. 3. Utilice LAG() para obtener el período anterior. 4. Evite divisiones entre cero. 5. Ordene los resultados cronológicamente.  No inventes columnas. No utilices INSERT, UPDATE, DELETE ni DROP. Explica brevemente la consulta. 
+```
+
+**Validación:** ejecutar la consulta en DBeaver y contrastar resultados con los registros de la base.
+
+La restricción textual no sustituye los permisos SQL: la conexión que ejecuta consultas automatizadas debe contar con privilegios adecuados, preferentemente de solo lectura.
+
+## **Caso 2. Prompt Engineering en Python**
+
+### **Problema**
+
+Necesitamos revisar un pipeline de clasificación construido con `scikit-learn`.
+
+```         
+ Actúa como científico de datos especializado en Machine Learning con Python.  Revisa el pipeline que proporcionaré.  Evalúa: 1. Separación entre entrenamiento y prueba. 2. Posible fuga de información. 3. Aplicación del preprocesamiento. 4. Métricas utilizadas. 5. Reproducibilidad del procedimiento.  No reescribas todo el proyecto. Identifica errores concretos y propone correcciones justificadas.  Si necesitas datos adicionales, indícalo. 
+```
+
+Aquí el LLM actúa como asistente de revisión técnica.
+
+El analista debe ejecutar el código y verificar que las modificaciones propuestas no introduzcan nuevos errores.
+
+## **Caso 3. Prompt Engineering en R**
+
+Podemos utilizarlo para explicar y revisar un flujo de análisis desarrollado con `tidymodels`.
+
+Ejemplo de instrucción:
+
+> Actúa como analista especializado en R y tidymodels. Revisa el código suministrado, identifica posibles errores en la receta de preprocesamiento y explica cómo comprobar que las transformaciones se ajustan exclusivamente con datos de entrenamiento. Mantén las convenciones del proyecto original.
+
+## **Caso 4. Prompt Engineering en Power BI**
+
+La IA puede apoyar la explicación y elaboración de medidas DAX.
+
+Por ejemplo:
+
+> Actúa como especialista en Power BI. Con base en el modelo semántico proporcionado, propone una medida para calcular ventas acumuladas respetando los filtros seleccionados. Explica el contexto de filtros y señala qué relaciones del modelo necesitas conocer. No inventes tablas ni columnas.
+
+La medida propuesta deberá validarse dentro de Power BI.
+
+## **Caso 5. Interpretación de resultados de Machine Learning**
+
+Supongamos que un modelo de regresión presenta:
+
+| Métrica                   | Resultado |
+|---------------------------|-----------|
+| RMSE validación cruzada   | 1,019     |
+| RMSE prueba independiente | 0,830     |
+
+Un prompt adecuado solicitaría:
+
+> Interpreta estas métricas utilizando la escala de la variable objetivo. Distingue desempeño en validación cruzada y prueba independiente. No afirmes que el modelo es bueno o malo sin conocer la dispersión del objetivo, un modelo de referencia y las condiciones de evaluación.
+
+Este es un ejemplo de cómo el contexto y las restricciones mejoran la calidad de la interpretación.
+
+# **2.5. Automatización de prompts**
+
+## **2.5.1. ¿Qué es un prompt parametrizado?**
+
+Hasta ahora hemos utilizado prompts escritos manualmente.
+
+Sin embargo, en una automatización necesitamos que las instrucciones puedan reutilizarse con datos que cambian.
+
+Por ejemplo:
+
+```         
+Empresa: {empresa} Período: {periodo} Ventas: {ventas} Crecimiento: {crecimiento_pct}  Redacta un informe ejecutivo utilizando exclusivamente los indicadores recibidos.
+```
+
+Los elementos entre llaves representan variables que una aplicación sustituirá por valores concretos.
+
+Esto permite ejecutar una misma plantilla con distintos conjuntos de datos.
+
+## **2.5.2. ¿Cómo se relaciona con n8n y Ollama?**
+
+Durante la Unidad 1 realizamos una demostración docente con estas herramientas.
+
+Ahora estudiaremos cómo incorporar un prompt estructurado dentro de ese proceso.
+
+**Datos empresariales**
+
+Ventas o indicadores verificados
+
+**n8n**
+
+Prepara los datos e incorpora variables al prompt
+
+**Ollama + Qwen3**
+
+Procesa la instrucción y genera el informe
+
+**Validación**
+
+Comprobar cifras, estructura y afirmaciones
+
+**Resultado**
+
+Informe ejecutivo
+
+La automatización ejecuta un proceso previamente diseñado. No es todavía un agente que selecciona herramientas de acuerdo con una pregunta.
+
+## **2.5.3. ¿Cómo entra el agente de IA?**
+
+En el proyecto integrador evolucionaremos esta arquitectura.
+
+La diferencia será que el usuario podrá realizar una pregunta en lenguaje natural y el modelo podrá solicitar el uso de herramientas autorizadas.
+
+Por ejemplo:
+
+> ¿Qué ciudad registró la mayor caída de ventas en marzo?
+
+El agente podría solicitar una consulta SQL predefinida, recibir sus resultados y generar una respuesta.
+
+No obstante, la ejecución efectiva de las herramientas, los permisos y las validaciones corresponden al sistema que integra al modelo.
+
+### **¿Qué papel tendrá el prompt en ese agente?**
+
+El prompt definirá aspectos como:
+
+- Función del agente: analista de Business Intelligence.
+
+- Herramientas permitidas: consultas de lectura.
+
+- Restricciones: no modificar ni eliminar datos.
+
+- Reglas de interpretación: no inventar indicadores.
+
+- Formato de respuesta: cifras, período, fuente y conclusión.
+
+En este sentido, **Prompt Engineering es una competencia necesaria para construir agentes**, pero no sustituye su arquitectura técnica ni sus controles de seguridad.
